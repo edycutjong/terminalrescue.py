@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+env.bak/
+venv.bak/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# FoxMQ
+foxmq
+foxmq.d/
+
+# Temporary / Debug files
+debug_subscriber.py
+*.log
