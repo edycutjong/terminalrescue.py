@@ -6,6 +6,21 @@
 
 set -e
 
+echo -e "\033[1;36m"
+cat << 'EOF'
+ ╔═════════════════════════════════════════════════════════════════════╗
+ ║  _______                  _             _   _____                   ║
+ ║ |__   __|                (_)           | | |  __ \                  ║
+ ║    | | ___ _ __ _ __ ___  _ _ __   __ _| | | |__) |___  ___  ___    ║
+ ║    | |/ _ \ '__| '_ ` _ \| | '_ \ / _` | | |  _  // _ \/ __|/ __|   ║
+ ║    | |  __/ |  | | | | | | | | | | (_| | | | | \ \  __/\__ \ (__    ║
+ ║    |_|\___|_|  |_| |_| |_|_|_| |_|\__,_|_| |_|  \_\___||___/\___|   ║
+ ║                                                                     ║
+ ║                  B F T   S w a r m   S i m u l a t i o n            ║
+ ╚═════════════════════════════════════════════════════════════════════╝
+EOF
+echo -e "\033[0m"
+
 if ! python3 -c "import paho.mqtt" &> /dev/null; then
     echo "❌ Error: Python dependencies are missing."
     echo "Please run: pip install -r requirements.txt"
@@ -16,6 +31,13 @@ if [ ! -f "./foxmq" ]; then
     echo "❌ Error: FoxMQ binary not found."
     echo "Please run: ./setup_foxmq.sh"
     exit 1
+fi
+
+# ── Cleanup previous orphaned instances ────────────────────────────
+if pgrep -x "foxmq" > /dev/null; then
+    echo "⚠️  Found orphaned FoxMQ instance. Cleaning up..."
+    killall foxmq 2>/dev/null || true
+    sleep 1
 fi
 
 # ── Start FoxMQ broker in background ─────────────────────────────
