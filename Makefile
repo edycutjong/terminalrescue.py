@@ -3,8 +3,9 @@
 # Install dependencies and make the script executable
 setup:
 	@echo "==> Setting up TerminalRescue environment..."
-	chmod +x run_demo.sh drone.py grid_display.py
+	chmod +x run_demo.sh setup_foxmq.sh
 	python3 -m pip install -r requirements.txt
+	./setup_foxmq.sh
 	@echo "==> Setup complete! Run 'make run' to start."
 
 # Run the simulation
