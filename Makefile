@@ -4,7 +4,8 @@
 setup:
 	@echo "==> Setting up TerminalRescue environment..."
 	chmod +x run_demo.sh setup_foxmq.sh
-	python3 -m pip install -r requirements.txt
+	python3 -m venv venv
+	venv/bin/pip install -r requirements.txt
 	./setup_foxmq.sh
 	@echo "==> Setup complete! Run 'make run' to start."
 

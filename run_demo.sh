@@ -24,9 +24,15 @@ cat << 'EOF'
 EOF
 echo -e "\033[0m"
 
-if ! python3 -c "import paho.mqtt" &> /dev/null; then
+if [ -f "venv/bin/python" ]; then
+    PYTHON_BIN="venv/bin/python"
+else
+    PYTHON_BIN="python3"
+fi
+
+if ! $PYTHON_BIN -c "import paho.mqtt" &> /dev/null; then
     echo "❌ Error: Python dependencies are missing."
-    echo "Please run: pip install -r requirements.txt"
+    echo "Please run: make setup"
     exit 1
 fi
 
@@ -72,4 +78,4 @@ cleanup() {
 trap cleanup EXIT
 
 # ── Launch Mission Control ───────────────────────────────────────
-python3 grid_display.py
+$PYTHON_BIN grid_display.py
