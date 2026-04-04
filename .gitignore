@@ -29,3 +29,10 @@ foxmq.d/
 
 # Temporary / Debug files
 *.log
+
+# Testing / Coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.pytest_cache/
