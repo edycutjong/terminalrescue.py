@@ -90,8 +90,6 @@ flowchart TD
 
 ### 🎥 Live Video Demo
 
-[![Terminal Rescue Demo Video](https://img.youtube.com/vi/SWfuIp6vxs8/maxresdefault.jpg)](https://youtu.be/SWfuIp6vxs8)
-
 [**Watch on YouTube (`https://youtu.be/SWfuIp6vxs8`)**](https://youtu.be/SWfuIp6vxs8)
 
 ### 🕹️ Simulation Timeline
