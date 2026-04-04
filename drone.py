@@ -188,25 +188,17 @@ class DroneNode:
         my_assigned_sectors = [
             all_sectors[i] for i in range(len(all_sectors)) if owners[i] == self.node_id
         ]
-        my_fair_share = len(my_assigned_sectors)
         
-        # Add remaining sectors as fallback to guarantee 100% grid completion seamlessly
-        other_sectors = [s for s in all_sectors if s not in my_assigned_sectors]
-        search_sequence = my_assigned_sectors + other_sectors
-
         claimed_this_round = 0
-        for sector in search_sequence:
+        for sector in my_assigned_sectors:
             if sector not in self.all_claims:
                 self.publish_claim(sector)
                 self.pending_claims.add(sector)
                 claimed_this_round += 1
-                time.sleep(0.05)  # faster claiming because a drone might have up to 40 sectors
+                time.sleep(0.1)  # staggered claiming for a dramatic mesh forming effect
 
-                if claimed_this_round % 4 == 0:
+                if claimed_this_round % 2 == 0:
                     self.publish_heartbeat()
-
-                if claimed_this_round >= my_fair_share:
-                    break
 
         self.publish_heartbeat()
 
