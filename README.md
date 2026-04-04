@@ -88,7 +88,7 @@ flowchart TD
 [![Terminal Rescue Demo Video](https://img.youtube.com/vi/SWfuIp6vxs8/maxresdefault.jpg)](https://youtu.be/SWfuIp6vxs8)
 
 [**Watch on YouTube (`https://youtu.be/SWfuIp6vxs8`)**](https://youtu.be/SWfuIp6vxs8)
-*(Shows the Kill-Switch survival in real-time. Alternatively, [download the raw `.mov` here](docs/terminal-rescue-demo.mov)).*
+![Terminal Rescue Demo](docs/terminal-rescue-demo.gif)
 
 ### 🕹️ Simulation Timeline
 

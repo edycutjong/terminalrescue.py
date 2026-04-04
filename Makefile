@@ -1,4 +1,4 @@
-.PHONY: setup run demo kill clean
+.PHONY: setup run demo kill clean test
 
 # Install dependencies and make the script executable
 setup:
@@ -26,3 +26,7 @@ kill:
 clean: kill
 	@echo "==> Removing cache files..."
 	rm -rf __pycache__ .pytest_cache *.pyc
+
+# Run test suite with coverage
+test:
+	venv/bin/pytest --cov=. --cov-report=term-missing --cov-fail-under=100
