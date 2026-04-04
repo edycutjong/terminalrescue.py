@@ -6,6 +6,9 @@
 
 set -e
 
+clear
+echo -ne "\033]0;Terminal Rescue - BFT Swarm Simulation\007"
+
 echo -e "\033[1;36m"
 cat << 'EOF'
  ╔═════════════════════════════════════════════════════════════════════╗
