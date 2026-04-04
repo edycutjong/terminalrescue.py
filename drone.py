@@ -228,6 +228,10 @@ class DroneNode:
                     if len(self.peers) >= 4 or (now - self._ready_since >= 3.0):
                         self.state = "CLAIMING"
                 
+                if self.state == "COMPLETE":
+                    if len(self.all_claims) < config.TOTAL_SECTORS:
+                        self.state = "CLAIMING"
+
                 if self.state == "CLAIMING":
                     self.bid_for_sectors()
                     # Wait for BFT to confirm/reject our claims
