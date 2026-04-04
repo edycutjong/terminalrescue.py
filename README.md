@@ -48,18 +48,11 @@ The core feature is the **Kill-Switch Stunt**.
 
 ### Architecture
 
-```
-┌─────────────┐       ┌─────────────┐       ┌─────────────┐
-│  Drone (1)  │◄─────►│   FoxMQ     │◄─────►│  Drone (3)  │
-└─────────────┘       │  BFT Broker │       └─────────────┘
-                      │  (Vertex)   │
-┌─────────────┐       │             │       ┌─────────────┐
-│  Drone (2)  │◄─────►│  MQTT 1883  │◄─────►│  Drone (4)  │
-└─────────────┘       └──────┬──────┘       └─────────────┘
-                             │
-                      ┌──────┴──────┐
-                      │  Observer   │
-                      │  (Mission   │
-                      │   Control)  │
-                      └─────────────┘
+```mermaid
+flowchart TD
+    D1["Drone (1)"] <--> broker["FoxMQ<br>BFT Broker<br>(Vertex)<br>MQTT 1883"]
+    D2["Drone (2)"] <--> broker
+    broker <--> D3["Drone (3)"]
+    broker <--> D4["Drone (4)"]
+    broker --- obs["Observer<br>(Mission Control)"]
 ```
