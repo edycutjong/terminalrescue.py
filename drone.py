@@ -294,7 +294,7 @@ class DroneNode:
             self.client.loop_stop()
             self.client.disconnect()
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     parser = argparse.ArgumentParser()
     parser.add_argument("--id", type=str, required=True, help="Unique Drone ID")
     args = parser.parse_args()
