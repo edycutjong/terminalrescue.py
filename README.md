@@ -16,6 +16,8 @@
 
 A pure Python, leaderless search-and-rescue swarm simulation powered by Vertex BFT consensus via Tashi FoxMQ.
 
+![Terminal Rescue Demo](docs/terminal-rescue-demo.gif)
+
 ## Challenge: DoraHacks Vertex Swarm Challenge (Track 2)
 
 **TerminalRescue** mathematically proves **Mesh Survival** and **Decentralized Logic** without relying on heavy 3D physics engines. By abstracting the environment into a terminal matrix, the entire focus of the architecture is on demonstrating FoxMQ's BFT messaging for verifiable, collision-proof drone coordination.
@@ -89,7 +91,6 @@ flowchart TD
 [![Terminal Rescue Demo Video](https://img.youtube.com/vi/SWfuIp6vxs8/maxresdefault.jpg)](https://youtu.be/SWfuIp6vxs8)
 
 [**Watch on YouTube (`https://youtu.be/SWfuIp6vxs8`)**](https://youtu.be/SWfuIp6vxs8)
-![Terminal Rescue Demo](docs/terminal-rescue-demo.gif)
 
 ### 🕹️ Simulation Timeline
 
