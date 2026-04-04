@@ -52,6 +52,12 @@ EVENT_COLORS = {
     "SYSTEM":    "bold green",
 }
 
+def speak(text):
+    if sys.platform == "darwin":
+        # Run asynchronously to avoid blocking the rich UI refresh
+        subprocess.Popen(["say", "-v", "Samantha", text], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
 
 class ObserverNode:
     def __init__(self):
@@ -75,6 +81,8 @@ class ObserverNode:
         self.total_messages = 0
         self.claim_count = 0
         self.release_count = 0
+        self.mission_complete_announced = False
+
 
         # ── Drone subprocess management ──────────────────────────
         self.drone_procs = []  # list of (drone_id, Popen)
@@ -132,6 +140,7 @@ class ObserverNode:
                     if self.start_time is None and len(self.all_claims) >= config.TOTAL_SECTORS:
                         self.start_time = time.time()
                         self._log_event("SYSTEM", "Setup sequence complete. Initiating Search Timer...", "green")
+                        speak("Swarm bootup complete. Initial grid locked. Commencing decentralized search.")
 
                     label = DRONE_PALETTE.get(sender, {}).get("label", sender)
                     self._log_event("CLAIM", f"{label} claimed sector {sector}", EVENT_COLORS["CLAIM"])
@@ -151,6 +160,7 @@ class ObserverNode:
                     f"☠ {label} OFFLINE — {len(released)} sector(s) freed",
                     EVENT_COLORS["RELEASE"],
                 )
+                speak(f"Mesh fault detected. Drone {label} heartbeat lost. Releasing orphaned sectors.")
 
         except Exception:
             pass
@@ -356,6 +366,10 @@ class ObserverNode:
         content.append(f"  Active: ", style="white")
         content.append(f"{active}", style="bold green")
 
+        if pct >= 1.0 and not getattr(self, "mission_complete_announced", False):
+            self.mission_complete_announced = True
+            speak("Mesh completely stabilized. All sectors successfully rescued. Mission complete.")
+
         progress_title = (
             "[bold #66ff99]🎉 MISSION COMPLETE[/bold #66ff99]"
             if pct >= 1.0
@@ -397,6 +411,7 @@ class ObserverNode:
                 proc.terminate()
                 label = DRONE_PALETTE.get(drone_id, {}).get("label", drone_id)
                 self._log_event("KILL", f"☠ Terminated {label} (PID {proc.pid})", "red")
+                speak(f"Critical warning. Kill switch engaged. Drone {label} manually terminated.")
                 return label
         return None
 
@@ -449,6 +464,7 @@ class ObserverNode:
 
         self.client.loop_start()
         self._log_event("SYSTEM", "Connected to FoxMQ broker", "green")
+        speak("Mission control online. Connected to Fox MQ proxy.")
 
         # Start keyboard listener thread
         key_thread = threading.Thread(target=self._key_listener, daemon=True)
