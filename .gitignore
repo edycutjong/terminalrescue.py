@@ -28,5 +28,4 @@ foxmq
 foxmq.d/
 
 # Temporary / Debug files
-debug_subscriber.py
 *.log
