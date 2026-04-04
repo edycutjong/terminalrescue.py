@@ -520,6 +520,6 @@ class ObserverNode:
             self.client.disconnect()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     obs = ObserverNode()
     obs.run()
