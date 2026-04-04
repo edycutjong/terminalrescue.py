@@ -1,5 +1,18 @@
 # TerminalRescue.py
 
+```text
+  _____                   _             _ _____                                          
+ |_   _|                 (_)           | |  __ \                                         
+   | | ___ _ __ _ __ ___  _ _ __   __ _| | |__) |___  ___  ___ _   _  ___       _ __  _   _ 
+   | |/ _ \ '__| '_ ` _ \| | '_ \ / _` | |  _  // _ \/ __|/ __| | | |/ _ \  _  | '_ \| | | |
+   | |  __/ |  | | | | | | | | | | (_| | | | \ \  __/\__ \ (__| |_| |  __/ (_) | |_) | |_| |
+   |_|\___|_|  |_| |_| |_|_|_| |_|\__,_|_|_|  \_\___||___/\___|\__,_|\___|     | .__/ \__, |
+                                                                               | |     __/ |
+                                                                               |_|    |___/ 
+```
+
+[![YouTube Video Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube)](https://youtu.be/SWfuIp6vxs8)
+
 A pure Python, leaderless search-and-rescue swarm simulation powered by Vertex BFT consensus via Tashi FoxMQ.
 
 ## Challenge: DoraHacks Vertex Swarm Challenge (Track 2)
@@ -19,25 +32,36 @@ The core feature is the **Kill-Switch Stunt**.
 - **One-Command Demo**: Single `./run_demo.sh` launches broker + observer + 5 drones. Interactive `K` (kill) and `Q` (quit) controls built in.
 - **Pure Python + Minimal Deps**: Requires only `paho-mqtt` and `rich`. Easily readable and verifiable by judges within a 5-minute window.
 
-### Quickstart
+### 🚀 Quickstart
 
-1. Set up the Python environment (virtual environment recommended):
+For hackathon judges, we've designed a friction-free setup using the bundled `Makefile`:
+
+1. **Set up a Python virtual environment** (recommended to avoid polluting global state):
    ```bash
    python3 -m venv venv
    source venv/bin/activate
-   pip install -r requirements.txt
    ```
 
-2. Initialize FoxMQ (downloads the broker & generates drone configs):
+2. **One-Command Setup:**
    ```bash
-   chmod +x setup_foxmq.sh run_demo.sh
-   ./setup_foxmq.sh
+   make setup
+   ```
+   *(This automatically installs dependencies, sets execution permissions, and initializes the FoxMQ BFT broker.)*
+
+3. **Launch the Simulation:**
+   ```bash
+   make run
    ```
 
-3. Launch the interactive simulation:
-   ```bash
-   ./run_demo.sh
-   ```
+### 🛠️ Make Commands Toolkit
+If you get stuck or need to forcefully restart, the `Makefile` includes cleanup tools:
+
+```bash
+make setup  # Installs deps, modifies permissions, prepares FoxMQ
+make run    # (alias `make demo`) Launches the observer and drones
+make kill   # Forcefully terminates any rogue background processes (like leftover brokers)
+make clean  # Performs `make kill` and wipes python cache directories
+```
 
 ### Controls
 
@@ -56,3 +80,30 @@ flowchart TD
     broker <--> D4["Drone (4)"]
     broker --- obs["Observer<br>(Mission Control)"]
 ```
+
+## 📸 Mission Gallery & Demo
+
+### 🎥 Live Video Demo
+
+[![Terminal Rescue Demo Video](https://img.youtube.com/vi/SWfuIp6vxs8/maxresdefault.jpg)](https://youtu.be/SWfuIp6vxs8)
+
+[**Watch on YouTube (`https://youtu.be/SWfuIp6vxs8`)**](https://youtu.be/SWfuIp6vxs8)
+*(Shows the Kill-Switch survival in real-time. Alternatively, [download the raw `.mov` here](docs/terminal-rescue-demo.mov)).*
+
+### 🕹️ Simulation Timeline
+
+| Swarm Bootup | Grid Claiming |
+|:---:|:---:|
+| ![Bootup](docs/01-swarm-bootup.png) | ![Grid](docs/02-grid-claiming.png) |
+
+| Mesh Stabilization | Mission Control Live |
+|:---:|:---:|
+| ![Stabilization](docs/03-mesh-stabilization.png) | ![Mission Control](docs/04-mission-control-live.png) |
+
+| Kill-Switch Activation | Fault Detection (BFT) |
+|:---:|:---:|
+| ![Kill Switch](docs/05-kill-switch-activation.png) | ![Fault Detection](docs/06-fault-detection.png) |
+
+| Autonomous Recovery | Mission Complete |
+|:---:|:---:|
+| ![Recovery](docs/07-autonomous-recovery.png) | ![Mission Complete](docs/08-mission-complete.png) |
