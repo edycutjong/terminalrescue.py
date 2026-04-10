@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerminalRescue | Mission Control</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="particle-canvas" style="position: fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1; pointer-events:none;"></canvas>
+    
+    <!-- MISSION BRIEFING MODAL -->
+    <div id="briefing-modal" class="modal-overlay">
+        <div class="glass-panel modal-content">
+            <h2>🛰️ MISSION BRIEFING</h2>
+            <div class="briefing-text">
+                <p>Welcome to <strong>TerminalRescue</strong>. You are observing a leaderless swarm of autonomous drones coordinating via Vertex BFT consensus to scan a disaster zone.</p>
+                
+                <h3>The Swarm & Grid</h3>
+                <ul>
+                    <li><span class="text-cyan">◆ Dots:</span> Independent drone agents moving across the map.</li>
+                    <li><span class="text-green">■ Tiles:</span> Search sectors. Drones bid to claim tiles using consensus math so humans don't have to micro-manage them.</li>
+                </ul>
+
+                <h3>Interactive Controls (The "Money Shot")</h3>
+                <ul>
+                    <li><strong>🎯 Remote Assassination (Kill Switch):</strong> In the left Telemetry Panel, click the <span style="color: #ff3333; font-weight: bold;">KILL</span> button next to any drone. Watch the swarm detect the failure within 10s and autonomously re-allocate the orphaned sectors!</li>
+                    <li><strong>⚠️ Dynamic Hazards:</strong> Click any tile on the central grid to flag it as a Hazard. A BFT message is instantly pushed to the swarm to update their world map.</li>
+                </ul>
+            </div>
+            <button class="btn-legend" style="margin-top: 1.5rem; font-size: 1rem; padding: 0.8rem 2rem; align-self: center;" onclick="hideBriefing()">START OBSERVATION</button>
+        </div>
+    </div>
+
+    <div class="app-container" id="app">
+        <!-- HEADER / TELEMETRY -->
+        <header class="glass-panel header">
+            <div class="logo">
+                <h1><span class="text-magenta">◈ TERMINAL</span><span class="text-cyan">RESCUE</span></h1>
+                <p>Vertex 2.0 Native Rust Swarm</p>
+            </div>
+            <div class="telemetry">
+                <div class="legend-container">
+                    <button class="btn-legend" onclick="showBriefing()" style="margin-right: 10px;">📜 MISSION BRIEFING</button>
+                    <button class="btn-legend">ℹ️ LEGEND</button>
+                    <div class="legend-tooltip glass-panel">
+                        <div class="legend-item">
+                            <div class="grid-cell" style="width:20px; height:20px; display:inline-block; border-color:#fff; box-shadow:inset 0 0 10px rgba(255,255,255,0.5)"></div>
+                            <span>Active Claim</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="grid-cell" style="width:20px; height:20px; display:inline-block; border-color:#fff; background:rgba(255,255,255,0.25)"></div>
+                            <span>Fully Searched</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="grid-cell hazard" style="width:20px; height:20px; display:inline-block;"></div>
+                            <span>Hazard Sector</span>
+                        </div>
+                        <div class="legend-item" style="padding-left:5px">
+                            <div class="cell-drone" style="width:10px; height:10px; display:inline-block; background-color: #fff"></div>
+                            <span style="margin-left: 5px">Drone Pos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <span class="label">TIME</span>
+                    <span class="value" id="timer">00:00</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">ACTIVE DRONES</span>
+                    <span class="value text-green" id="active-drones">0/0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">PROGRESS</span>
+                    <span class="value text-yellow" id="mission-progress">0%</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- LEFT PANEL: DRONES -->
+            <aside class="glass-panel drone-panel">
+                <h2>SWARM TELEMETRY</h2>
+                <div id="drone-list" class="drone-list">
+                    <!-- Javascript populates this -->
+                </div>
+            </aside>
+
+            <!-- CENTER PANEL: GRID -->
+            <main class="grid-container">
+                <div class="glass-panel matrix-wrapper">
+                    <div id="search-grid" class="search-grid">
+                        <!-- Javascript generates 100 cells -->
+                    </div>
+                </div>
+            </main>
+            <!-- RIGHT PANEL: LOGS -->
+            <aside class="glass-panel log-panel">
+                <h2>BFT EVENT LOG</h2>
+                <div id="event-log" class="event-log">
+                    <!-- Javascript populated -->
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
