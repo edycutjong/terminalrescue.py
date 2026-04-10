@@ -14,7 +14,7 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-<video controls autoplay loop muted src="docs/terminal-rescue-demo.webm" poster="docs/terminal-rescue-thumbnail.png" width="100%"></video>
+[![Watch the Demo](https://img.youtube.com/vi/59owjPyyP3o/maxresdefault.jpg)](https://youtu.be/59owjPyyP3o)
 
 ## The Problem
 
