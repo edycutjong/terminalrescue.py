@@ -9,12 +9,12 @@
    |_|\___|_|  |_| |_| |_|_|_| |_|\__,_|_|_|  \_\___||___/\___|\__,_|\___|  
 ```
 
-[![YouTube Video Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube)](https://youtu.be/59owjPyyP3o)
+[![YouTube Video Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube)](https://youtu.be/91FS-OAtVIU)
 [![CI Status](https://img.shields.io/github/actions/workflow/status/edycutjong/terminalrescue.py/ci.yml?branch=main&style=for-the-badge&logo=github)](https://github.com/edycutjong/terminalrescue.py/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-[![Watch the Demo](https://img.youtube.com/vi/59owjPyyP3o/maxresdefault.jpg)](https://youtu.be/59owjPyyP3o)
+[![Watch the Demo](https://img.youtube.com/vi/91FS-OAtVIU/maxresdefault.jpg)](https://youtu.be/91FS-OAtVIU)
 
 ## The Problem
 
@@ -121,7 +121,7 @@ flowchart TD
 
 ### 🎥 Live Video Demo
 
-[**Watch the narrated demo on YouTube**](https://youtu.be/59owjPyyP3o)
+[**Watch the full demo on YouTube**](https://youtu.be/91FS-OAtVIU)
 
 ### 🕹️ Mission Timeline
 

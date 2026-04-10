@@ -85,5 +85,5 @@ Drone (2) <--> FoxMQ BFT Broker (Vertex, MQTT 1883) <--> Drone (4)
 
 ## Links
 
-- **YouTube Demo:** https://youtu.be/59owjPyyP3o
+- **YouTube Demo:** https://youtu.be/91FS-OAtVIU
 - **GitHub:** https://github.com/edycutjong/terminalrescue.py

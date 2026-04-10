@@ -24,4 +24,4 @@ jobs:
         
     - name: Run tests with pytest
       run: |
-        pytest --cov=config --cov=debug_subscriber --cov-report=term-missing --cov-fail-under=50
+        pytest --cov=config --cov=debug_subscriber --cov-report=term-missing --cov-fail-under=100
