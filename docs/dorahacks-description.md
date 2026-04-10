@@ -1,20 +1,9 @@
-# Terminal Rescue
+# DoraHacks BUIDL Description
 
-```text
-  _____                   _             _ _____                             
- |_   _|                 (_)           | |  __ \                            
-   | | ___ _ __ _ __ ___  _ _ __   __ _| | |__) |___  ___  ___ _   _  ___   
-   | |/ _ \ '__| '_ ` _ \| | '_ \ / _` | |  _  // _ \/ __|/ __| | | |/ _ \  
-   | |  __/ |  | | | | | | | | | | (_| | | | \ \  __/\__ \ (__| |_| |  __/  
-   |_|\___|_|  |_| |_| |_|_|_| |_|\__,_|_|_|  \_\___||___/\___|\__,_|\___|  
-```
+Copy everything below the `---` line into the DoraHacks description field.
+DoraHacks cannot resolve relative paths, so all media links use absolute GitHub raw URLs.
 
-[![YouTube Video Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube)](https://youtu.be/59owjPyyP3o)
-[![CI Status](https://img.shields.io/github/actions/workflow/status/edycutjong/terminalrescue.py/ci.yml?branch=main&style=for-the-badge&logo=github)](https://github.com/edycutjong/terminalrescue.py/actions/workflows/ci.yml)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-<video controls src="docs/terminal-rescue-final-demo.mp4" poster="docs/terminal-rescue-thumbnail.png" width="100%"></video>
+---
 
 ## The Problem
 
@@ -42,7 +31,7 @@ The real proof is in the failure. The core feature is the **Kill-Switch Stunt**:
 
 The grid search completes with **zero orphaned sectors** and **zero human intervention**. This demonstrates **Mesh Survival** — the fleet doesn't just "survive" a node dropout, it actively self-heals and redistributes workload in real time.
 
-### 🚧 Dynamic Hazard Avoidance
+### Dynamic Hazard Avoidance
 
 The mesh also showcases autonomous trajectory re-routing when presented with sudden geometric obstacles:
 
@@ -66,46 +55,23 @@ Aligned with the hackathon's "Systems Over Demos" philosophy, we deliberately ab
 - **Glassmorphism Web Dashboard:** FastAPI + WebSocket-powered Mission Control with live telemetry, environmental scars (`.crater` from offline nodes), and remote kill capabilities.
 - **One-Command Demo:** `make run` launches FoxMQ, FastAPI, and 5 compiled Rust drones. One click for judges.
 
-## 🚀 Quickstart
-
-For hackathon judges, we've designed a friction-free setup using the bundled `Makefile`:
-
-1. **Set up a Python virtual environment** (recommended to avoid polluting global state):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-2. **One-Command Setup:**
-   ```bash
-   make setup
-   ```
-   *(This automatically installs dependencies, sets execution permissions, prepares FoxMQ schema, and sets up FastAPI).*
-
-3. **Launch the Simulation:**
-   ```bash
-   make run
-   ```
-   *(Then open `localhost:8000` in your browser)*
-
-## 🛠️ Make Commands Toolkit
+## Quickstart
 
 ```bash
-make setup  # Installs deps, modifies permissions, prepares FoxMQ
-make run    # (alias `make demo`) Launches background drones and the Uvicorn web server
-make kill   # Forcefully terminates any rogue background processes
-make clean  # Performs `make kill` and wipes python cache directories
+python3 -m venv venv
+source venv/bin/activate
+make setup
+make run
+# Open localhost:8000 in your browser
 ```
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    D1["Drone (1)"] <--> broker["FoxMQ<br>BFT Broker<br>(Vertex)<br>MQTT 1883"]
-    D2["Drone (2)"] <--> broker
-    broker <--> D3["Drone (3)"]
-    broker <--> D4["Drone (4)"]
-    broker --- obs["Observer<br>(Mission Control)"]
+```
+Drone (1) <--> FoxMQ BFT Broker (Vertex, MQTT 1883) <--> Drone (3)
+Drone (2) <--> FoxMQ BFT Broker (Vertex, MQTT 1883) <--> Drone (4)
+                         |
+                  Observer (Mission Control)
 ```
 
 ## Built With
@@ -117,8 +83,7 @@ flowchart TD
 - **Vanilla JS/CSS** — Glassmorphism Web UI (no frameworks)
 - **Playwright** — Automated demo recording
 
-## 📸 Demo
+## Links
 
-### 🎥 Live Video Demo
-
-[**Watch the narrated demo on YouTube**](https://youtu.be/59owjPyyP3o)
+- **YouTube Demo:** https://youtu.be/59owjPyyP3o
+- **GitHub:** https://github.com/edycutjong/terminalrescue.py
