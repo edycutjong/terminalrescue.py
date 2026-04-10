@@ -16,7 +16,7 @@
 
 A hybrid Rust/Python, leaderless search-and-rescue swarm simulation powered by Vertex BFT consensus via Tashi FoxMQ. The drone mesh firmware runs on lightning-fast Rust binaries, while the visual Mission Control operates on Python FastAPI.
 
-[![Terminal Rescue Demo](https://img.youtube.com/vi/59owjPyyP3o/maxresdefault.jpg)](https://youtu.be/59owjPyyP3o)
+<video controls src="docs/terminal-rescue-final-demo.mp4" poster="docs/terminal-rescue-thumbnail.png" width="100%"></video>
 
 ## Challenge: DoraHacks Vertex Swarm Challenge (Track 2)
 
