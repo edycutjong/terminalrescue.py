@@ -16,26 +16,28 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-A pure Python, leaderless search-and-rescue swarm simulation powered by Vertex BFT consensus via Tashi FoxMQ.
+A hybrid Rust/Python, leaderless search-and-rescue swarm simulation powered by Vertex BFT consensus via Tashi FoxMQ. The drone mesh firmware runs on lightning-fast Rust binaries, while the visual Mission Control operates on Python FastAPI.
 
 ![Terminal Rescue Demo](docs/terminal-rescue-demo.gif)
 
 ## Challenge: DoraHacks Vertex Swarm Challenge (Track 2)
 
-**TerminalRescue** mathematically proves **Mesh Survival** and **Decentralized Logic** without relying on heavy 3D physics engines. By abstracting the environment into a terminal matrix, the entire focus of the architecture is on demonstrating FoxMQ's BFT messaging for verifiable, collision-proof drone coordination.
+**TerminalRescue** mathematically proves **Mesh Survival** and **Decentralized Logic** without relying on heavy 3D physics engines. By abstracting the physical environment into a live real-time dashboard, the entire focus of the architecture is on demonstrating FoxMQ's BFT messaging for verifiable, collision-proof drone coordination coupled with a beautiful and accessible Web UI.
 
 ### The "Money Shot"
 
 The core feature is the **Kill-Switch Stunt**.
-1. Launch the fullscreen Mission Control dashboard — it automatically starts the FoxMQ broker and spawns 5 drones.
-2. Press **K** to kill a random drone mid-mission.
+1. Launch the Uvicorn web server and open the Mission Control web dashboard at `localhost:8000` — it automatically connects to the FoxMQ broker and tracks the autonomous drones.
+2. Click the remote **KILL** action next to any drone in the telemetry panel to kill it mid-mission.
 3. Watch the surviving drones autonomously detect the stale heartbeat, submit a `RELEASE` protocol, and immediately re-bid on the orphaned sectors — all without double-searching.
 
 ### Features
 - **Leaderless**: No central command. All nodes govern themselves based on shared consensus state.
 - **Race-Condition-Proof**: BFT ordering guarantees that if two drones try to `CLAIM` the same sector simultaneously, the network mathematically decides a single winner for all participants.
-- **One-Command Demo**: Single `./run_demo.sh` launches broker + observer + 5 drones. Interactive `K` (kill) and `Q` (quit) controls built in.
-- **Pure Python + Minimal Deps**: Requires only `paho-mqtt` and `rich`. Easily readable and verifiable by judges within a 5-minute window.
+- **Aversion Weighting & Greedy Pathfinding**: Drones utilize autonomous nearest-neighbor algorithms over the Rust mesh to organically optimize flight paths. When `HAZARD` zones are dropped, nodes apply extreme cost-weighting penalties (`+10,000` Euclidean distance) to dynamically redraw flight geometry *around* the danger zone.
+- **Physical UI Constants**: The frontend evaluates geographical Euclidean jumps to compute rendering speeds, ensuring drones strictly obey S-Curve `cubic-bezier` mass inertia acceleration logic with capped velocities. 
+- **Modern Web Interface**: Glassmorphism dashboard built with FastAPI and WebSockets, rendering live telemetry and environmental persistence (e.g. permanent `.crater` scars from offline nodes).
+- **One-Command Demo**: Single `make run` executes the FoxMQ broker, FastAPI web server, and spins up the 5 compiled Rust drones. Easily verifiable by judges.
 
 ### 🚀 Quickstart
 
@@ -51,29 +53,27 @@ For hackathon judges, we've designed a friction-free setup using the bundled `Ma
    ```bash
    make setup
    ```
-   *(This automatically installs dependencies, sets execution permissions, and initializes the FoxMQ BFT broker.)*
+   *(This automatically installs dependencies, sets execution permissions, prepares FoxMQ schema, and sets up FastAPI).*
 
 3. **Launch the Simulation:**
    ```bash
    make run
    ```
+   *(Then open `localhost:8000` in your browser)*
 
 ### 🛠️ Make Commands Toolkit
 If you get stuck or need to forcefully restart, the `Makefile` includes cleanup tools:
 
 ```bash
 make setup  # Installs deps, modifies permissions, prepares FoxMQ
-make run    # (alias `make demo`) Launches the observer and drones
-make kill   # Forcefully terminates any rogue background processes (like leftover brokers)
+make run    # (alias `make demo`) Launches background drones and the Uvicorn web server
+make kill   # Forcefully terminates any rogue background processes
 make clean  # Performs `make kill` and wipes python cache directories
 ```
 
-### Controls
+### Controls (Via Web UI)
 
-| Key | Action |
-|-----|--------|
-| `K` | Kill a random active drone (demonstrates mesh survival) |
-| `Q` | Quit the simulation and clean up all processes |
+Open the Mission Control Web Dashboard at `localhost:8000` to interact with the swarm in real-time. Use the remote kill capabilities linked in the telemetry logs to kill specific drones.
 
 ### Architecture
 
