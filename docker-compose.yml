@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  dashboard:
+    build: .
+    image: terminal-rescue-vertex
+    ports:
+      - "8000:8000"
+    environment:
+      # Tell the Python server NOT to spawn the 5 child processes
+      - NO_SPAWN=1
+    networks:
+      - meshet
+
+  drone_1:
+    image: terminal-rescue-vertex
+    command: ["./vertex_drone/target/release/vertex_drone", "--id", "drone_1"]
+    depends_on:
+      - dashboard
+    networks:
+      - meshet
+
+  drone_2:
+    image: terminal-rescue-vertex
+    command: ["./vertex_drone/target/release/vertex_drone", "--id", "drone_2"]
+    depends_on:
+      - dashboard
+    networks:
+      - meshet
+
+  drone_3:
+    image: terminal-rescue-vertex
+    command: ["./vertex_drone/target/release/vertex_drone", "--id", "drone_3"]
+    depends_on:
+      - dashboard
+    networks:
+      - meshet
+
+  drone_4:
+    image: terminal-rescue-vertex
+    command: ["./vertex_drone/target/release/vertex_drone", "--id", "drone_4"]
+    depends_on:
+      - dashboard
+    networks:
+      - meshet
+
+  drone_5:
+    image: terminal-rescue-vertex
+    command: ["./vertex_drone/target/release/vertex_drone", "--id", "drone_5"]
+    depends_on:
+      - dashboard
+    networks:
+      - meshet
+
+networks:
+  meshet:
+    driver: bridge

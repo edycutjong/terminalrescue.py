@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+venv/
+.env
+.pytest_cache
+
+# Skip rust targets in the copy, we build them in Docker
+vertex_drone/target/
+
+# Ignore old foxmq binaries and logic
+foxmq
+foxmq.d
+setup_foxmq.sh
+drone.py.bak
