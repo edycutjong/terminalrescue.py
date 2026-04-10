@@ -18,7 +18,7 @@
 
 A hybrid Rust/Python, leaderless search-and-rescue swarm simulation powered by Vertex BFT consensus via Tashi FoxMQ. The drone mesh firmware runs on lightning-fast Rust binaries, while the visual Mission Control operates on Python FastAPI.
 
-![Terminal Rescue Demo](docs/terminal-rescue-demo.gif)
+<video controls autoplay loop muted src="docs/terminal-rescue-demo.webm" width="100%"></video>
 
 ## Challenge: DoraHacks Vertex Swarm Challenge (Track 2)
 
@@ -30,6 +30,15 @@ The core feature is the **Kill-Switch Stunt**.
 1. Launch the Uvicorn web server and open the Mission Control web dashboard at `localhost:8000` — it automatically connects to the FoxMQ broker and tracks the autonomous drones.
 2. Click the remote **KILL** action next to any drone in the telemetry panel to kill it mid-mission.
 3. Watch the surviving drones autonomously detect the stale heartbeat, submit a `RELEASE` protocol, and immediately re-bid on the orphaned sectors — all without double-searching.
+
+### 🚧 Dynamic Hazard Avoidance
+
+The mesh also showcases autonomous trajectory re-routing when presented with sudden geometric obstacles. 
+1. Click anywhere on the sweeping grid during a live mission to drop an impassable **HAZARD** firewall.
+2. Observe the Rust backend applying a massive `+10,000` Euclidean cost penalty to those sectors.
+3. The drones instinctively redraw their pathfinding vectors mid-flight, snaking around the hazard without losing coordination.
+
+<video controls autoplay loop muted src="docs/hazard-avoidance-demo.webm" width="100%"></video>
 
 ### Features
 - **Leaderless**: No central command. All nodes govern themselves based on shared consensus state.
