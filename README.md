@@ -9,14 +9,14 @@
    |_|\___|_|  |_| |_| |_|_|_| |_|\__,_|_|_|  \_\___||___/\___|\__,_|\___|  
 ```
 
-[![YouTube Video Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube)](https://youtu.be/SWfuIp6vxs8)
+[![YouTube Video Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube)](https://youtu.be/59owjPyyP3o)
 [![CI Status](https://img.shields.io/github/actions/workflow/status/edycutjong/terminalrescue.py/ci.yml?branch=main&style=for-the-badge&logo=github)](https://github.com/edycutjong/terminalrescue.py/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 A hybrid Rust/Python, leaderless search-and-rescue swarm simulation powered by Vertex BFT consensus via Tashi FoxMQ. The drone mesh firmware runs on lightning-fast Rust binaries, while the visual Mission Control operates on Python FastAPI.
 
-<video controls autoplay loop muted src="docs/terminal-rescue-demo.webm" width="100%"></video>
+[![Terminal Rescue Demo](https://img.youtube.com/vi/59owjPyyP3o/maxresdefault.jpg)](https://youtu.be/59owjPyyP3o)
 
 ## Challenge: DoraHacks Vertex Swarm Challenge (Track 2)
 
@@ -97,7 +97,7 @@ flowchart TD
 
 ### 🎥 Live Video Demo
 
-[**Watch on YouTube (`https://youtu.be/SWfuIp6vxs8`)**](https://youtu.be/SWfuIp6vxs8)
+[**Watch on YouTube (`https://youtu.be/59owjPyyP3o`)**](https://youtu.be/59owjPyyP3o)
 
 ### 🕹️ Simulation Timeline
 
