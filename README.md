@@ -122,3 +122,21 @@ flowchart TD
 ### 🎥 Live Video Demo
 
 [**Watch the narrated demo on YouTube**](https://youtu.be/59owjPyyP3o)
+
+### 🕹️ Mission Timeline
+
+| Swarm Bootup | Grid Claiming |
+|:---:|:---:|
+| ![Bootup](docs/01-swarm-bootup.png) | ![Grid](docs/02-grid-claiming.png) |
+
+| Mesh Stabilization | Mission Control Live |
+|:---:|:---:|
+| ![Stabilization](docs/03-mesh-stabilization.png) | ![Mission Control](docs/04-mission-control-live.png) |
+
+| Kill-Switch Activation | Fault Detection (BFT) |
+|:---:|:---:|
+| ![Kill Switch](docs/05-kill-switch-activation.png) | ![Fault Detection](docs/06-fault-detection.png) |
+
+| Autonomous Recovery | Mission Complete |
+|:---:|:---:|
+| ![Recovery](docs/07-autonomous-recovery.png) | ![Mission Complete](docs/08-mission-complete.png) |
