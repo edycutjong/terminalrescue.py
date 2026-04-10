@@ -36,3 +36,6 @@ foxmq.d/
 coverage.xml
 htmlcov/
 .pytest_cache/
+
+# Backups
+*.bak
